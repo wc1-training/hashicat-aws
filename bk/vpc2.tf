@@ -1,12 +1,16 @@
+provider "aws" {
+  region = "us-east-1"
+}
+
 data "aws_security_group" "default" {
   name   = "default"
   vpc_id = module.vpc.vpc_id
 }
 
 module "vpc" {
-  source = "./terraform-aws-vpc"
+  source = "../../"
 
-  name = "simple-example"
+  name = "wc1-training-example"
 
   cidr = "10.0.0.0/16"
 
@@ -29,7 +33,9 @@ module "vpc" {
   }
 
   vpc_tags = {
-    Name = "vpc-name"
+    Name = "vpc-wc1-training"
   }
 }
+
+
 
